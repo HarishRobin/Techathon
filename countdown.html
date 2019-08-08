@@ -6,60 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel="stylesheet" href="countdown.css">
-<style>
-#clockdiv{
-	display: inline-block;
-	font-weight: 200;
-	text-align: center;
-	font-size: 30px;
-}
-
-#clockdiv > div{
-	padding: 10px;
-	border-radius: 3px;
-	background: transparent;
-	display: inline-block;
-}
-
-#clockdiv div > span{
-	padding: 15px;
-	border-radius: 3px;
-	display: inline-block;
-}
-
-.smalltext{
-	padding-top: 5px;
-	font-size: 16px;
-  color:white;
-}
-h1 {
-  font-size: 72px;
-  background: -webkit-linear-gradient(#c70039, #ff5733 70%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-</style>
 </head>
 <body>
 
-    <div id="clockdiv">
-        <div>
-         <h1><span class="days"></span></h1>
-          <div class="smalltext">Days</div>
-        </div>
-        <div>
-          <h1><span class="hours"></span></h1>
-          <div class="smalltext">Hours</div>
-        </div>
-        <div>
-          <h1><span class="minutes"></span></h1>
-          <div class="smalltext">Minutes</div>
-        </div>
-        <div>
-        <h1><span class="seconds"></span></h1>
-          <div class="smalltext">Seconds</div>
-        </div>
-      </div>
       <script>
         function getTimeRemaining(endtime) {
             var t = Date.parse(endtime) - Date.parse(new Date());

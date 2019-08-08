@@ -4,7 +4,7 @@
     <title>Tech-A-Thon</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+    <!--<link rel="icon" type="image/ico" href="images/Icon.png" />-->
     <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
     <link rel="stylesheet" href="fonts/icomoon/style.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -17,9 +17,47 @@
     <link rel="stylesheet" href="css/aos.css">
 
     <link rel="stylesheet" href="css/style.css">
+    <style>
 
+        @import url('https://fonts.googleapis.com/css?family=Roboto+Mono&display=swap');
+          .root{
+            font-family: "Roboto Mono";
+          }
+        #clockdiv{
+          display: inline-block;
+          font-weight: 200;
+          text-align: center;
+          font-size: 30px;
+        }
+        
+        #clockdiv > div{
+          padding: 10px;
+          border-radius: 3px;
+          background: transparent;
+          display: inline-block;
+        }
+        
+        #clockdiv div > span{
+          padding: 15px;
+          border-radius: 3px;
+          display: inline-block;
+        }
+        
+        .smalltext{
+          padding-top: 5px;
+          font-size: 16px;
+          color:white;
+        }
+        .hello {
+          font-size: 72px;
+          background: -webkit-linear-gradient(#c70039, #ff5733 70%);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+        }
+        </style>
+    
   </head>
-  <body>
+  <body style="background-color:#032357">
   
   <div class="site-wrap">
 
@@ -35,10 +73,10 @@
     <header class="site-navbar py-3" role="banner">
       <div class="container-fluid">
         <div class="row align-items-center">
-          <div class="col-11 col-xl-2">
-            <h1 class="mb-0"><a href="#" class="text-white h2 mb-0">Tech.<span class="text-primary">A</span>.Thon </a></h1>
+          <div class="col-11 col-xl-3">
+            <h1 class="mb-0"><a href="#" class="text-white h2 mb-0">Tech<span class="text-primary">-A-</span>Thon </a></h1>
           </div>
-          <div class="col-12 col-md-10 d-none d-xl-block">
+          <div class="col-12 col-md-9 d-none d-xl-block">
             <nav class="site-navigation position-relative text-right" role="navigation">
               <ul class="site-menu js-clone-nav mx-auto d-none d-lg-block">
                 <li><a href="#">Home</a></li>
@@ -60,8 +98,29 @@
         <div class="row align-items-center">
           <div class="col-md-10">
             
-            <h1 class="d-block mb-4" data-aos="fade-up" data-aos-delay="200">TECH.A.THON 2019</h1>
+            <h1 class="d-block mb-4" data-aos="fade-up" data-aos-delay="200">TECH-A-THON 2019</h1>
             <span class="d-block mb-5 caption" id="app" data-aos="fade-up" data-aos-delay="300">Create, Code, Present, Win</span>
+
+            <div class="root" style="margin-top: -6%;margin-bottom: 5%; margin-left: -2%;">
+                <div id="clockdiv">
+                    <div>
+                     <h1><span class="days hello"></span></h1>
+                      <div class="smalltext">Days</div>
+                    </div>
+                    <div>
+                      <h1><span class="hours hello"></span></h1>
+                      <div class="smalltext">Hours</div>
+                    </div>
+                    <div>
+                      <h1><span class="minutes hello"></span></h1>
+                      <div class="smalltext">Minutes</div>
+                    </div>
+                    <div>
+                    <h1><span class="seconds hello"></span></h1>
+                      <div class="smalltext">Seconds</div>
+                    </div>
+                  </div>
+                </div>
             <a href="#" class="btn-custom" data-aos="fade-up" data-aos-delay="400"><span>Register</span></a>
           </div>
         </div>
@@ -343,6 +402,47 @@
     </footer>
     
   </div>
+  <script>
+      function getTimeRemaining(endtime) {
+        var t = Date.parse(endtime) - Date.parse(new Date());
+        var seconds = Math.floor((t / 1000) % 60);
+        var minutes = Math.floor((t / 1000 / 60) % 60);
+        var hours = Math.floor((t / (1000 * 60 * 60)) % 24);
+        var days = Math.floor(t / (1000 * 60 * 60 * 24));
+        return {
+        'total': t,
+        'days': days,
+        'hours': hours,
+        'minutes': minutes,
+        'seconds': seconds
+        };
+    }
+    
+    function initializeClock(id, endtime) {
+        var clock = document.getElementById(id);
+        var daysSpan = clock.querySelector('.days');
+        var hoursSpan = clock.querySelector('.hours');
+        var minutesSpan = clock.querySelector('.minutes');
+        var secondsSpan = clock.querySelector('.seconds');
+    
+        function updateClock() {
+        var t = getTimeRemaining(endtime);
+    
+        daysSpan.innerHTML = ('0' + t.days).slice(-2);
+        hoursSpan.innerHTML = ('0' + t.hours).slice(-2);
+        minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
+        secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);
+    
+        if (t.total <= 0) {
+        clearInterval(timeinterval);
+        }
+        }
+    
+        updateClock();
+        var timeinterval = setInterval(updateClock, 1000);
+    }
+    var deadline = new Date(Date.parse(new Date("Aug 16, 2019 13:30:00")) + 0 * 24 * 60 * 60 * 1000);
+    initializeClock('clockdiv', deadline);</script>
   <script src="js/jquery-3.3.1.min.js"></script>
   <script src="js/jquery-migrate-3.0.1.min.js"></script>
   <script src="js/jquery-ui.js"></script>
